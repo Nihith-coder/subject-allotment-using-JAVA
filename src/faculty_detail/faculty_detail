@@ -1,0 +1,48 @@
+
+package faculty_detail;
+
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+public class faculty_detail extends JFrame 
+{
+   Container c;
+   JLabel heading = new JLabel("Faculty Details");
+   
+   public faculty_detail(String str )
+   {
+      
+      c = this.getContentPane();
+      c.setLayout(null);
+      c.setBackground(Color.BLACK);
+      
+      Font f = new Font("Arial" , Font.PLAIN , 40);
+      
+      heading.setBounds(50 , 30 , 450 , 40);
+      heading.setFont(f);
+      
+      c.add(heading);
+     
+      try
+      {  
+         Reader reader = new FileReader(str); 
+         int data;
+         while((data = reader.read())!= -1)
+         {
+            System.out.print((char)data);
+         }
+         reader.close();  
+      }
+      catch (IOException ex) {  
+         System.out.println(ex.getMessage());  
+      }
+      catch ( Exception ex)
+      {
+         System.out.println(ex);
+      }
+   }
+}
