@@ -1,0 +1,21 @@
+
+import selection.*;
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
+import java.util.*;
+import java.lang.*;
+
+class project
+{
+   public static void main(String [] args)
+   {
+      
+      selection f = new selection();
+      f.setVisible(true);
+      f.setTitle("Selection of position");
+      f.setBounds(100 , 100 , 1000 , 600);
+      f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+      
+   }
+}
