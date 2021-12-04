@@ -1,0 +1,64 @@
+
+package coordinator_login;
+import faculty_names.*;
+import create_new.*;
+
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+public class coordinator_login extends JFrame implements ActionListener
+{
+   Container c;
+   JButton create_new = new JButton("create new faculty");
+   JButton faculty_names = new JButton("Faculty names");
+   
+   
+   public coordinator_login()
+   {
+      
+      c = this.getContentPane();
+      c.setLayout(null);
+      c.setBackground(Color.GREEN);
+      
+      create_new.setBounds(100 , 100 , 200 , 25);
+      faculty_names.setBounds(400 , 100 , 200 , 25);
+      
+      Font f = new Font("Arial" , Font.PLAIN , 20);
+      
+      create_new.setFont(f);
+      faculty_names.setFont(f);
+      
+      create_new.addActionListener(this);
+      faculty_names.addActionListener(this);
+      
+      c.add(create_new);
+      c.add(faculty_names);
+   }
+   
+   public void actionPerformed(ActionEvent e)
+   {
+      if(e.getSource() == create_new)
+      {
+         create_new f = new create_new();
+         f.setVisible(true);
+         f.setTitle("Creating new faculty details.....");
+         f.setBounds(100 , 100 , 1000 , 600);
+         f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+         this.dispose();
+      }
+      
+      if( e.getSource() == faculty_names)
+      {
+         faculty_names f = new faculty_names();
+         f.setVisible(true);
+         f.setTitle("Faculty names");
+         f.setBounds(100 , 100 , 1000 , 600);
+         f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+         this.dispose();
+      }
+   }
+}
