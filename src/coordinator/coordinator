@@ -1,0 +1,99 @@
+
+package coordinator;
+
+import coordinator_login.*;
+
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+public class coordinator extends JFrame implements ActionListener
+{
+   Container c;
+   JLabel cname = new JLabel("Coordinator Name");
+   JLabel c_id = new JLabel("Coordinator id");
+   JLabel c_pass = new JLabel("Password");
+   JButton login = new JButton("Login");
+   JTextField cuser = new JTextField();
+   JTextField cuser_id = new JTextField();
+   JPasswordField cpassd = new JPasswordField();
+   JLabel warn = new JLabel("Wrong username or Password");
+   JLabel clogin_form = new JLabel("Coordinator Login Form");
+   
+   public coordinator()
+   {
+      c = this.getContentPane();
+      c.setLayout(null);
+      c.setBackground(Color.YELLOW);
+      
+      clogin_form.setBounds(200 , 20 , 500 , 50);  
+          
+      cname.setBounds(100 , 100 , 200 , 30);
+      c_id.setBounds(100, 140, 200 , 30);
+      c_pass.setBounds(100, 180, 200 , 30);
+      login.setBounds(320 , 220 , 100 , 25);
+      cuser.setBounds(320 , 100 , 100 , 30);
+      cuser_id.setBounds(320 , 140 , 100 , 30);
+      cpassd.setBounds(320 , 180 , 100 , 30);
+      
+      Font f = new Font("Arial" , Font.PLAIN , 20);
+      
+      cname.setFont(f);
+      c_id.setFont(f);
+      c_pass.setFont(f);
+      login.setFont(f);
+      cuser.setFont(f);
+      cuser_id.setFont(f);
+      cpassd.setFont(f);
+      
+      Font f1 = new Font("Arial" , Font.BOLD , 40);
+      clogin_form.setFont(f1);
+      
+      login.addActionListener(this);
+      
+      c.add(clogin_form);
+      c.add(cuser_id);
+      c.add(c_id);
+      c.add(cname);
+      c.add(c_pass);
+      c.add(login);
+      c.add(cuser);
+      c.add(cpassd);
+   }
+   
+   public void actionPerformed(ActionEvent e)
+   {
+      if(e.getSource() == login)
+      {
+         String username = cuser.getText();
+         String password = cpassd.getText();
+         String userId = cuser_id.getText();
+         
+         if( username.equals("Dhakshayani") && password.equals("Dhakshayani@ise") && userId.equals("1BMISE999") )
+         {
+            c.setBackground(Color.ORANGE);
+            c.remove(warn);
+            System.out.println("Successfully login");
+            
+            coordinator_login f = new coordinator_login();
+            f.setVisible(true);
+            f.setTitle("Successfully Login");
+            f.setBounds(100 , 100 , 1000 , 600);
+            f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            this.dispose();
+         }
+         else
+         {
+            c.setBackground(Color.RED);
+            warn.setBounds(100 , 300 , 200 , 30);
+            c.add(warn);
+            cuser.setText(null);
+            cuser_id.setText(null);
+            cpassd.setText(null);
+         }
+      }
+   }
+}
