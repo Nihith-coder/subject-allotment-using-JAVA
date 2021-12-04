@@ -1,0 +1,106 @@
+
+package faculty;
+
+
+import faculty_detail.*;
+
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+public class faculty extends JFrame implements ActionListener
+{
+   Container c;
+   JLabel uname = new JLabel("Faculty Name");
+   JLabel User_id = new JLabel("User id");
+   JLabel pass = new JLabel("Password");
+   JButton login = new JButton("Login");
+   JTextField user = new JTextField();
+   JTextField user_id = new JTextField();
+   JPasswordField passd = new JPasswordField();
+   JLabel warn = new JLabel("Wrong username or Password");
+   JLabel login_form = new JLabel("Faculty Login Form");
+   
+   public faculty()
+   {
+      c = this.getContentPane();
+      c.setLayout(null);
+      c.setBackground(Color.GREEN);
+      
+      login_form.setBounds(200 , 20 , 500 , 50);  
+          
+      uname.setBounds(100 , 100 , 200 , 30);
+      User_id.setBounds(100, 140, 200 , 30);
+      pass.setBounds(100, 180, 200 , 30);
+      login.setBounds(320 , 220 , 100 , 25);
+      user.setBounds(320 , 100 , 100 , 30);
+      user_id.setBounds(320 , 140 , 100 , 30);
+      passd.setBounds(320 , 180 , 100 , 30);
+      
+      Font f = new Font("Arial" , Font.PLAIN , 20);
+      
+      uname.setFont(f);
+      User_id.setFont(f);
+      pass.setFont(f);
+      login.setFont(f);
+      user.setFont(f);
+      user_id.setFont(f);
+      passd.setFont(f);
+      
+      Font f1 = new Font("Arial" , Font.BOLD , 40);
+      login_form.setFont(f1);
+      
+      login.addActionListener(this);
+      
+      c.add(login_form);
+      c.add(user_id);
+      c.add(User_id);
+      c.add(uname);
+      c.add(pass);
+      c.add(login);
+      c.add(user);
+      c.add(passd);
+   }
+   
+   public void actionPerformed(ActionEvent e)
+   {
+      if(e.getSource() == login)
+      {
+         String username = user.getText();
+         String password = passd.getText();
+         String userId = user_id.getText();
+         
+         String str1 = "O:/My Project/files/";
+         String str2 = ".txt";
+         String str = str1 + userId + "_" + password + str2 ; 
+         
+         File file = new File(str);
+         
+         if( file.exists())
+         {
+            c.setBackground(Color.WHITE);
+            c.remove(warn);
+            System.out.println("Successfully login");
+            
+            faculty_detail f = new faculty_detail(str);
+            f.setVisible(true);
+            f.setTitle("My login form");
+            f.setBounds(100 , 100 , 1000 , 600);
+            f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            this.dispose();
+         }
+         else
+         {
+            c.setBackground(Color.RED);
+            warn.setBounds(100 , 300 , 200 , 30);
+            c.add(warn);
+            user.setText(null);
+            user_id.setText(null);
+            passd.setText(null);
+         }
+      }
+   }
+}
