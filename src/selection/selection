@@ -1,0 +1,63 @@
+
+
+package selection;
+import faculty.*;
+import coordinator.*;
+
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
+import java.util.*;
+import java.lang.*;
+
+public class selection extends JFrame implements ActionListener
+{
+   Container c;
+   JButton faculty = new JButton("Faculty");
+   JButton coordinator = new JButton("Coordinator");
+   
+   public selection()
+   {
+      c = this.getContentPane();
+      c.setLayout(null);
+      c.setBackground(Color.GREEN);
+      
+      faculty.setBounds(100 , 100 , 200 , 25);
+      coordinator.setBounds(400 , 100 , 200 , 25);
+      
+      Font f = new Font("Arial" , Font.PLAIN , 20);
+      
+      faculty.setFont(f);
+      coordinator.setFont(f);
+      
+      faculty.addActionListener(this);
+      coordinator.addActionListener(this);
+      
+      c.add(faculty);
+      c.add(coordinator);
+   }
+   public void actionPerformed(ActionEvent e)
+   {
+      if(e.getSource() == faculty)
+      {
+         faculty f = new faculty();
+         f.setVisible(true);
+         f.setTitle("Faculty Login form");
+         f.setBounds(100 , 100 , 1000 , 600);
+         f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+         this.dispose();
+      }
+      
+      
+      
+      if( e.getSource() == coordinator)
+      {
+         coordinator f = new coordinator();
+         f.setVisible(true);
+         f.setTitle("Coordinator Login form");
+         f.setBounds(100 , 100 , 1100 , 600);
+         f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+         this.dispose();
+      }
+   }
+}
