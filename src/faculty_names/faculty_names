@@ -1,0 +1,91 @@
+
+package faculty_names;
+import faculty_detail.*;
+
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+import java.util.ArrayList;
+import java.util.List.*;
+import java.util.Iterator;
+
+public class faculty_names extends JFrame implements ActionListener
+{
+   Container c;
+   JButton button[];
+   int i = 0;
+   
+   public faculty_names()
+   {
+      c = this.getContentPane();
+      c.setLayout(null);
+      c.setBackground(Color.GREEN);
+      
+      Font f = new Font("Arial" , Font.PLAIN , 30);
+      ArrayList<String> list = new ArrayList<String>();
+
+      File[] files = new File("O:/My Project/files").listFiles();
+     
+      for (File file : files) {
+         if (file.isFile()) {
+            list.add(file.getName());
+         }
+      }
+      
+      Iterator<String> itr = list.iterator();
+      
+      button = new JButton[100];
+      try
+      {
+         while(itr.hasNext())
+         {
+            button[i] = new JButton(itr.next());
+            i++;
+         }
+      }
+      catch(NullPointerException ex)
+      {
+         System.out.println(ex);
+      }
+      int k = 100;
+      for(int j = 0 ; j < i ; j++)
+      {
+         button[j].setBounds(100 , k , 600 ,  30);
+         k = k + 40;
+      }
+        
+      for(int j = 0 ; j < i ; j++)
+      {
+         button[j].setFont(f);
+      }  
+      
+      for(int j = 0 ; j < i ; j++)
+      {
+         button[j].addActionListener(this);
+      }  
+      
+      for(int j = 0 ; j < i ; j++)
+      {
+         c.add(button[j]);
+      }  
+   }
+   
+   public void actionPerformed(ActionEvent e)
+   {
+      int j = 0;
+      while( e.getSource() != button[j])
+      {
+         j++;
+      }
+      String str = "O:/My Project/files/" + button[j].getText();
+      faculty_detail f = new faculty_detail(str);
+      f.setVisible(true);
+      f.setTitle("faculty details");
+      f.setBounds(100 , 100 , 1000 , 600);
+      f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+      this.dispose();
+   }
+}
