@@ -1,0 +1,218 @@
+
+package create_new;
+
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+import java.io.FileOutputStream;
+
+public class create_new extends JFrame implements ActionListener
+{
+   Container c;
+   JLabel uname = new JLabel("Faculty Name:");
+   JLabel User_id = new JLabel("User id:");
+   JLabel mail_id = new JLabel("Mail id:");
+   JLabel dep_id = new JLabel("Department:");
+   JLabel subj = new JLabel("subect:");
+   JLabel occupation = new JLabel("Occupation:");
+   JLabel years = new JLabel("Years Assigned for:");
+   JLabel classes = new JLabel("class assigned for:");
+   JLabel exp = new JLabel("Working experience:");
+   JLabel married = new JLabel("Married:");
+   JLabel qual = new JLabel("Qualification:");
+   JLabel phone_no = new JLabel("phone no:");
+   JLabel pass  = new JLabel("Password:");
+   
+   JButton create = new JButton("create");
+   JTextField user = new JTextField();
+   JTextField user_id = new JTextField();
+   JTextField mail = new JTextField();
+   JTextField dep = new JTextField();
+   JTextField sub = new JTextField();
+   JTextField occ = new JTextField();
+   JTextField year = new JTextField();
+   JTextField cls = new JTextField();
+   JTextField expe = new JTextField();
+   JTextField marry = new JTextField();
+   JTextField quali = new JTextField();
+   JTextField phone = new JTextField();
+   JPasswordField password = new JPasswordField();
+   JLabel enroll = new JLabel("Enrollment form");
+   JLabel warn = new JLabel("Already exist user_id and password");
+   
+   
+   public create_new()
+   {
+      c = this.getContentPane();
+      c.setLayout(null);
+      c.setBackground(Color.GREEN);
+      
+      enroll.setBounds(200 , 20 , 500 , 50);  
+          
+      uname.setBounds(100 , 100 , 150 , 30);
+      User_id.setBounds(500, 100, 150 , 30);
+      mail_id.setBounds(100, 140, 150 , 30);
+      dep_id.setBounds(500, 140, 150 , 30);
+      subj.setBounds(100, 180, 150 , 30);
+      occupation.setBounds(500, 180, 150 , 30);
+      years.setBounds(100, 220, 150 , 30);
+      classes.setBounds(500, 220, 150 , 30);
+      exp.setBounds(100, 260, 150 , 30);
+      married.setBounds(500, 260, 150 , 30);
+      qual.setBounds(100, 300, 150 , 30);
+      phone_no.setBounds(500, 300, 150 , 30);
+      pass.setBounds(100, 340, 150 , 30);
+      
+      create.setBounds(420 , 380 , 100 , 25);
+      
+      user.setBounds(300 , 100 , 150 , 30);
+      user_id.setBounds(700, 100, 150 , 30);
+      mail.setBounds(300, 140, 150 , 30);
+      dep.setBounds(700, 140, 150 , 30);
+      sub.setBounds(300, 180, 150 , 30);
+      occ.setBounds(700, 180, 150 , 30);
+      year.setBounds(300, 220, 150 , 30);
+      cls.setBounds(700, 220, 150 , 30);
+      expe.setBounds(300, 260, 150 , 30);
+      marry.setBounds(700, 260, 150 , 30);
+      quali.setBounds(300, 300, 150 , 30);
+      phone.setBounds(700, 300, 150 , 30);
+      password.setBounds(300, 340, 150 , 30);
+      
+      Font f = new Font("Arial" , Font.PLAIN , 20);
+      
+      uname.setFont(f);
+      User_id.setFont(f);
+      mail_id.setFont(f);
+      dep_id.setFont(f);
+      subj.setFont(f);
+      occupation.setFont(f);
+      years.setFont(f);
+      classes.setFont(f);
+      exp.setFont(f);
+      married.setFont(f);
+      qual.setFont(f);
+      phone_no.setFont(f);
+      pass.setFont(f);
+      user.setFont(f);
+      user_id.setFont(f);
+      mail.setFont(f);
+      dep.setFont(f);
+      sub.setFont(f);
+      occ.setFont(f);
+      year.setFont(f);
+      cls.setFont(f);
+      expe.setFont(f);
+      marry.setFont(f);
+      quali.setFont(f);
+      phone.setFont(f);
+      password.setFont(f);
+      create.setFont(f);
+    
+      
+      Font f1 = new Font("Arial" , Font.BOLD , 40);
+      enroll.setFont(f1);
+      
+      create.addActionListener(this);
+      
+      c.add(create);
+      c.add(uname);
+      c.add(User_id);
+      c.add(mail_id);
+      c.add(dep_id);
+      c.add(subj);
+      c.add(occupation);
+      c.add(years);
+      c.add(classes);
+      c.add(exp);
+      c.add(married);
+      c.add(qual);
+      c.add(phone_no);
+      c.add(pass);
+      c.add(user);
+      c.add(user_id);
+      c.add(mail);
+      c.add(dep);
+      c.add(sub);
+      c.add(occ);
+      c.add(year);
+      c.add(cls);
+      c.add(expe);
+      c.add(marry);
+      c.add(quali);
+      c.add(phone);
+      c.add(password);
+      c.add(enroll);     
+      
+   }
+   
+   public void actionPerformed(ActionEvent e)
+   {
+      if(e.getSource() == create)
+      {
+         String pasd = password.getText();
+         String userId = user_id.getText();
+         
+         String str1 = "O:/My Project/files/";
+         String str2 = ".txt";
+         String str = str1 + userId +"_" + pasd + str2 ; 
+         
+         File file = new File(str);
+         
+         if( !file.exists() )
+         {
+            try {  
+               Writer w = new FileWriter(str);  
+               String content[] = new String[100];
+               content[0] = uname.getText() + user.getText() + "\n";
+               content[1] = User_id.getText() + user_id.getText() + "\n";
+               content[2] = mail_id.getText() + mail.getText() + "\n";
+               content[3] = dep_id.getText() + dep.getText() + "\n";
+               content[4] = subj.getText() + sub.getText() + "\n";
+               content[5] = occupation.getText() + occ.getText() + "\n";
+               content[6] = years.getText() + year.getText() + "\n";
+               content[7] = classes.getText() + cls.getText() + "\n";
+               content[8] = exp.getText() + expe.getText() + "\n";
+               content[9] = married.getText() + marry.getText() + "\n";
+               content[10] = qual.getText() + quali.getText() + "\n";
+               content[11] = phone_no.getText() + phone.getText() + "\n";
+               content[12] = pass.getText() + password.getText() + "\n";
+               for(int i = 0 ; content[i] != null ; i++)
+                  w.write(content[i]);  
+               w.close();
+            } catch (IOException ex) {  
+                ex.printStackTrace();  
+            }
+            c.setBackground(Color.WHITE);
+            c.remove(warn);
+            
+            user.setText(null);
+            user_id.setText(null);
+            mail.setText(null);
+            dep.setText(null);
+            sub.setText(null);
+            occ.setText(null);
+            year.setText(null);
+            cls.setText(null);
+            expe.setText(null);
+            marry.setText(null);
+            phone.setText(null);
+            quali.setText(null);
+            password.setText(null);
+                           
+            //this.dispose();
+         }
+         else
+         {
+            c.setBackground(Color.RED);
+            warn.setBounds(100 , 700 , 200 , 30);
+            c.add(warn);
+            user_id.setText(null);
+            password.setText(null);
+         }
+      }
+   }
+}
