@@ -1,1 +1,1 @@
-# Automated-subject-allotment-using-JAVA
+#subject-allotment-using-JAVA
